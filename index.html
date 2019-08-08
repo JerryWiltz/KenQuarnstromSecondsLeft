@@ -6,9 +6,46 @@
 		<title>Ken Quarnstrom Seconds Left</title>
 	</head>
 	<body id='body'>
+
+		<h1>Ken's Retirement Time Is Approaching!!</h1>
+
+		<style>
+table {
+	table-layout: fixed;
+	width: 50%;
+	border-collapse: collapse;
+	border: 3px solid purple;
+}
+		</style>
+
+		<table>
+			<tr><td>Days</td><td>Hours</td><td>Minutes</td><td>Seconds</td></tr>
+			<tr><td id='days'></td><td id='hours'></td><td id='minutes'></td><td id='secondsLeft'></td></tr>
+		</table>
+
 		<script>
-var body = document.getElementById('body')
-body.innerHTML = 'Ken';
+var then = new Date(2020, 3, 17, 15, 30, 15);
+var now = new Date();
+
+var left = then - now; // this is the number of milliseconds
+var seconds = left/1000;
+
+var days = Math.trunc(seconds/(60*60*24));
+var daysRemainder = seconds - (days*60*60*24); // in seconds
+
+var hours = Math.trunc(daysRemainder/(60*60));
+var hoursRemainder = daysRemainder - (hours*60*60);
+
+var minutes = Math.trunc(hoursRemainder/60);
+var minutesRemainder = hoursRemainder - (minutes*60);
+
+var secondsLeft = Math.trunc(minutesRemainder);
+
+document.getElementById("days").innerHTML = days;
+document.getElementById("hours").innerHTML = hours;
+document.getElementById("minutes").innerHTML = minutes;
+document.getElementById("secondsLeft").innerHTML = secondsLeft;
+
 		</script>
 
 	</body>
