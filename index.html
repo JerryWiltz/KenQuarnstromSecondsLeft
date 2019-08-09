@@ -16,43 +16,50 @@ table {
 	border-collapse: collapse;
 	border: 3px solid purple;
 }
+
+td.picture {
+	text-align: center;
+}
+
 		</style>
 
 		<table>
+			<tr><td class='picture' colspan='4'><img src="images/KenAndGina.jpg" alt="KenAndGina" height="528" width="960"></td></tr>
 			<tr><td>Days</td><td>Hours</td><td>Minutes</td><td>Seconds</td></tr>
 			<tr><td id='days'></td><td id='hours'></td><td id='minutes'></td><td id='secondsLeft'></td></tr>
 		</table>
 
 		<script>
-var then, now, left, seconds, days, daysRemainder, hours, hoursRemainder, minutes, minutesRemainder, secondsLeft;
-
-function countdown() {
+(function () {
+	var then, now, left, seconds, days, daysRemainder, hours, hoursRemainder, minutes, minutesRemainder, secondsLeft;
 	then = new Date(2020, 3, 17, 15, 30, 15);
-now = new Date();
 
-left = then - now; // this is the number of milliseconds
-seconds = left/1000;
+	function countdown() {
+		now = new Date();
 
-days = Math.trunc(seconds/(60*60*24));
-daysRemainder = seconds - (days*60*60*24); // in seconds
+		left = then - now; // this is the number of milliseconds
+		seconds = left/1000; // in seconds
 
-hours = Math.trunc(daysRemainder/(60*60));
-hoursRemainder = daysRemainder - (hours*60*60);
+		days = Math.trunc(seconds/(60*60*24));
+		daysRemainder = seconds - (days*60*60*24); // in seconds
 
-minutes = Math.trunc(hoursRemainder/60);
-minutesRemainder = hoursRemainder - (minutes*60);
+		hours = Math.trunc(daysRemainder/(60*60));
+		hoursRemainder = daysRemainder - (hours*60*60); // in seconds
 
-secondsLeft = Math.trunc(minutesRemainder);
+		minutes = Math.trunc(hoursRemainder/60);
+		minutesRemainder = hoursRemainder - (minutes*60); // in seconds
 
-document.getElementById("days").innerHTML = days;
-document.getElementById("hours").innerHTML = hours;
-document.getElementById("minutes").innerHTML = minutes;
-document.getElementById("secondsLeft").innerHTML = secondsLeft;
-};
+		secondsLeft = Math.trunc(minutesRemainder);
 
-countdown();
-setInterval(countdown, 1000);
+		document.getElementById("days").innerHTML = days;
+		document.getElementById("hours").innerHTML = hours;
+		document.getElementById("minutes").innerHTML = minutes;
+		document.getElementById("secondsLeft").innerHTML = secondsLeft;
+	};
 
+	countdown();
+	setInterval(countdown, 1000);
+})();
 		</script>
 
 	</body>
