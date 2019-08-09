@@ -11,13 +11,30 @@
 		<style>
 table {
 	table-layout: fixed;
-	width: 100%;
+	margin: auto;
+	height: 100%;
 	border-collapse: collapse;
 	border: 3px solid purple;
 }
 
-td.picture {
+tr.titles {
+	border-left: 2px solid purple;
+	border-top: 2px solid purple;
+	border-right: 2px solid purple;
+}
+
+tr.numbers {
+	border-left: 2px solid purple;
+	border-bottom: 2px solid purple;
+	border-right: 2px solid purple;
+}
+	
+td.picture, td.header, tr.titles, tr.numbers {
 	text-align: center;
+}
+
+td.header {
+	font-size: 32px;
 }
 
 img {
@@ -26,13 +43,11 @@ img {
 }
 		</style>
 
-		<h1>Ken's Retirement Date of April 17, 2020 at 3:30PM Is Fast Approaching!!</h1>
-
 		<table>
+			<tr><td class='header' colspan='4'>Ken's Retirement Date of April 17, 2020 at 3:30PM Is Fast Approaching!!</td></tr>
 			<tr><td class='picture' colspan='4'><img src="images/KenAndGina.jpg" alt="KenAndGina"></td></tr>
-			<tr><td>Days</td><td>Hours</td><td>Minutes</td><td>Seconds</td></tr>
-			<tr><td id='days'></td><td id='hours'></td><td id='minutes'></td><td id='secondsLeft'></td></tr>
-		</table>
+			<tr class='titles'><td>Days</td><td>Hours</td><td>Minutes</td><td>Seconds</td></tr>
+			<tr class='numbers'><td id='days'></td><td id='hours'></td><td id='minutes'></td><td id='secondsLeft'></td></tr> </table>
 
 		<script>
 (function () {
